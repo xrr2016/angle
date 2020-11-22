@@ -23,33 +23,36 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: BarChart(
-            max: 6000.0,
-            data: [
-              {
-                "label": "中国",
-                "value": 2800.0,
-              },
-              {
-                "label": "印度",
-                "value": 3000.0,
-              },
-              {
-                "label": "美国",
-                "value": 2200.0,
-              },
-              {
-                "label": "巴西",
-                "value": 3800.0,
-              },
-              {
-                "label": "法国",
-                "value": 5200.0,
-              },
-            ],
+          child: Container(
+            width: 400,
+            height: 400,
+            padding: EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.black,
+                width: 10,
+              ),
+            ),
+            child: CustomPaint(
+              painter: TestPainter(),
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+class TestPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    drawGrid(canvas, size);
+  }
+
+  @override
+  bool shouldRepaint(TestPainter oldDelegate) => false;
+
+  @override
+  bool shouldRebuildSemantics(TestPainter oldDelegate) => false;
 }
